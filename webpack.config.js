@@ -30,7 +30,7 @@ module.exports = {
             }
         }, {
             test: /\.scss$/,
-            loader: "style!css!postcss!resolve-url!sass?sourceMap"
+            loader: "style!css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!postcss!resolve-url!sass?sourceMap"
         }, {
             test: /\.(jpe?g|png|gif|svg)$/i,
             loaders: [
