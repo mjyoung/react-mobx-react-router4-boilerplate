@@ -34,6 +34,9 @@ rules:
         - composes
   no-qualifying-elements: 0
   no-url-protocols: 0
+  no-vendor-prefixes:
+    - 1
+    - ignore-non-standard: true
   placeholder-name-format:
     - 2
     - convention: hyphenatedlowercase
