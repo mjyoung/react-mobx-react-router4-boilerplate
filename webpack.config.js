@@ -51,7 +51,7 @@ module.exports = {
       hash: false,
       template: './index.hbs',
     }),
-    new webpack.ContextReplacementPlugin(/moment[\/\\]locale$/, /nb/),
+    new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /nb/),
     new webpack.LoaderOptionsPlugin({
       test: /\.scss$/,
       debug: true,
@@ -64,6 +64,11 @@ module.exports = {
           path: path.join(__dirname, 'dist'),
         },
       },
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV || 'development')
+      }
     }),
   ],
 };

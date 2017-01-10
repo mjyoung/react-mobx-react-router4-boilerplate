@@ -17,7 +17,7 @@ export default class App extends Component {
       <BrowserRouter>
         <Provider store={this.props.store}>
           <div className={styles.wrapper}>
-            <DevTools />
+            {process.env.NODE_ENV === 'development' && <DevTools />}
             <TopBar />
 
             <Match exactly pattern="/" component={Home} />
