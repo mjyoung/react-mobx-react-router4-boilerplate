@@ -62,7 +62,6 @@
     "mobx-react": "^3.5.7",
     "mobx-react-devtools": "^4.2.6",
     "moment": "^2.15.1",
-    "package": "^1.0.1",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-hot-loader": "next",
