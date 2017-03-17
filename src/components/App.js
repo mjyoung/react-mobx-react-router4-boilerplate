@@ -27,11 +27,6 @@ export default class App extends Component {
                   path="/"
                   component={Home}
                 />
-                <Route
-                  exact
-                  path="/nf"
-                  component={NotFound}
-                />
                 <Route component={NotFound} />
               </Switch>
             </div>
