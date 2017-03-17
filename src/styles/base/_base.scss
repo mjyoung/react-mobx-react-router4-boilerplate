@@ -1,24 +1,44 @@
-* {
-  box-sizing: inherit;
-
-  &::before {
-    box-sizing: inherit;
-  }
-
-  &::after {
-    box-sizing: inherit;
-  }
-}
+@import 'variables';
 
 html {
-  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased; // sass-lint:disable-line no-vendor-prefixes
+  font-family: 'Roboto', Helvetica, sans-serif;
+  font-size: 100%;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: 0;
-  margin: 0;
-  overflow-y: scroll;
+  color: $color-secondary;
+  line-height: 1.333;
+}
+
+h1 {
+  font-size: 3.998em;
+  margin-top: 0;
+}
+
+h1,
+h2 {
+  font-size: 2.827em;
+}
+
+h3 {font-size: 1.999em;}
+
+h4 {font-size: 1.414em;}
+
+a {
+  color: rgba($color-secondary, .9);
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    color: rgba($color-secondary, 1);
+  }
+
+  &.active {
+    color: rgba($color-secondary, 1);
+  }
 }

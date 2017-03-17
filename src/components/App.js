@@ -1,38 +1,50 @@
 import React, { Component, PropTypes } from 'react';
-import { BrowserRouter, Match, Miss } from 'react-router';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Provider, observer } from 'mobx-react';
 import DevTools from 'mobx-react-devtools';
 
-import Home from './Home';
-import TopBar from './TopBar';
-import NotFound from './NotFound';
+import { asyncComponent } from '../utils/lazy-load';
 
-import '../styles/main.scss';
-import styles from '../styles/components/App.scss';
+import TopBar from './TopBar';
+import styles from './App.scss';
+
+const Home = asyncComponent(() => import('./Home').then(module => module.default));
+const NotFound = asyncComponent(() => import('./NotFound').then(module => module.default));
 
 @observer
 export default class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Provider store={this.props.store}>
           <div className={styles.wrapper}>
             {process.env.NODE_ENV === 'development' && <DevTools />}
             <TopBar />
-
-            <Match exactly pattern="/" component={Home} />
-            <Miss component={NotFound} />
+            <div className={styles.contentWrapper}>
+              <Switch>
+                <Route
+                  exact
+                  path="/"
+                  component={Home}
+                />
+                <Route
+                  exact
+                  path="/nf"
+                  component={NotFound}
+                />
+                <Route component={NotFound} />
+              </Switch>
+            </div>
+            <footer>
+              Test App Footer
+            </footer>
           </div>
         </Provider>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
 
 App.propTypes = {
-  store: PropTypes.shape({})
-};
-
-App.defaultProps = {
-  store: PropTypes.shape({})
+  store: PropTypes.shape().isRequired
 };
